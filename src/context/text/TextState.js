@@ -5,11 +5,11 @@ export default function TextState(props) {
     let date_object;
 
     const handleCapitalizeFirstLetter = (text) => {
-        let words = text.split(' ');
+        let words = text.split(" ");
         for (let i=0; i<words.length; i++){
             words[i] = words[i].charAt(0).toUpperCase()+words[i].substring(1).toLowerCase();
         }
-        text = (words.join(' '));
+        text = (words.join(" "));
         return text;
     }
 
@@ -19,12 +19,12 @@ export default function TextState(props) {
 
     const giveMeDay = (date) => {
         checkDate(date);
-        return date_object.toLocaleString('en-US', { month: 'short', day: 'numeric', year: 'numeric' });
+        return date_object.toLocaleString("en-US", { month: "short", day: "numeric", year: "numeric" });
     } 
     
     const giveMeTime = (date) => {
         checkDate(date);
-        return date_object.toLocaleString('en-US', { hour: '2-digit', minute: '2-digit', hour12: true });
+        return date_object.toLocaleString("en-US", { hour: "2-digit", minute: "2-digit", hour12: true });
     }
 
     const trimTitle = (text) => {

@@ -11,10 +11,10 @@ const bcrypt = require('bcryptjs');
 var jwt = require('jsonwebtoken');
 const jwt_secret = process.env.JWT_SECRET;
 
-// importing fetchUserDetails middleware
-var fetchUserDetails = require('../middleware/fetchUserDetails');
+// importing verifyUserToken middleware
+var verifyUserToken = require('../middleware/verifyUserToken');
 
-// Route 1: sign up using POST method, URL "/api/auth/signup" with validation
+// Route 1: sign up using POST method, URL '/api/auth/signup' with validation
 router.post('/signup', [
   body('name').exists().withMessage('Name must not be empty')
   .isLength({ min: 3, max: 25 }).withMessage('Name must be atleast 3 and cannot be more than 25 characters')
@@ -28,14 +28,12 @@ router.post('/signup', [
   .isLength({ min: 5, max: 10 }).withMessage('Password must be atleast 5 and cannot be more than 10 characters')
   .matches(/^[A-Za-z0-9!@#$%^&*()_+\-={};':"|,.<>/?]+$/).withMessage('Password can only contain letters, numbers, and special characters')
 ], async (req, res) => {
-  let success = false;
   // checking if the request passed all validation rules
   const errors = validationResult(req);
 
    // if validation failed, return 400 Bad Request with the error messages
   if (!errors.isEmpty()) {
-    success = false;
-    return res.status(400).json({ error: errors.array() });
+    return res.status(400).json({ success: false, error: errors.array() });
   }
 
   try {
@@ -43,8 +41,7 @@ router.post('/signup', [
     const user_exists = await User.findOne({email: req.body.email});
 
     if (user_exists){// if user exists then no new user is created
-      success = false;
-      return res.status(400).json({ error: 'Email already exists' });
+      return res.status(409).json({ success: false, error: 'Email already exists.' });
     }
 
     const salt = await bcrypt.genSalt(10);
@@ -64,18 +61,15 @@ router.post('/signup', [
     }
     const authtoken = jwt.sign(data, jwt_secret);
 
-    success = true;
     // responding with success and authentication token (in JSON format)
-    res.json({ success, authtoken });
+    res.status(201).json({ success: true, authtoken });
 
   } catch (err) {
-    // logging other errors to console and returning 500 Internal Server Error
-    console.error(err);
-    res.status(500).json({ error: 'Internal Server Error' });
+    res.status(500).json({ success: false, error: 'Internal Server Error' });
   }
 });
 
-// Route 2: log in using POST method, URL "/api/auth/login" with validation
+// Route 2: log in using POST method, URL '/api/auth/login' with validation
 router.post('/login', [
   body('email').exists().withMessage('Email must not be empty')
   .isEmail().withMessage('Enter a valid email')
@@ -83,14 +77,12 @@ router.post('/login', [
   
   body('password').exists().withMessage('Password must not be empty')
 ], async (req, res) => {
-  let success = false;
   // checking if the request passed all validation rules
   const errors = validationResult(req);
 
    // if validation failed, return 400 Bad Request with the error messages
   if (!errors.isEmpty()) {
-    success = false;
-    return res.status(400).json({ error: errors.array() });
+    return res.status(400).json({ success: false, error: errors.array() });
   }
 
   const {email, password} = req.body;
@@ -101,16 +93,14 @@ router.post('/login', [
     const user_exists = await User.findOne({email});
 
     if (!user_exists){
-      success = false;
-      return res.status(400).json({ error: 'Enter valid credentials' });
+      return res.status(400).json({ success: false, error: 'Enter valid credentials.' });
     }
 
     // checking is the password is correct
     const password_matched = await bcrypt.compare(password, user_exists.password);
 
     if (!password_matched){
-      success = false;
-      return res.status(400).json({ error: 'Enter valid credentials' });
+      return res.status(400).json({ success: false, error: 'Enter valid credentials.' });
     }
 
     const data = {
@@ -120,29 +110,24 @@ router.post('/login', [
     }
     const authtoken = jwt.sign(data, jwt_secret);
 
-    success = true;
     // responding with success and authentication token (in JSON format)
-    res.json({ success, authtoken });
+    res.status(200).json({ success: true, authtoken });
 
   } catch (err) {
-    // logging other errors to console and returning 500 Internal Server Error
-    console.error(err);
-    res.status(500).json({ error: 'Internal Server Error' });
+    res.status(500).json({ success: false, error: 'Internal Server Error' });
   }
 });
 
-// Route 3: fetching logged in user details using POST method, URL "/api/auth/fetchuserdetails" after logging in
-// fetchUserDetails is a middleware which verifies the authtoken, extracts user details
-router.get("/fetchuserdetails", fetchUserDetails, async (req, res) => {
+// Route 3: fetching logged in user details using GET method, URL '/api/auth/fetchuserdetails' after logging in
+// verifyUserToken is a middleware which verifies the authtoken, extracts user details
+router.get('/fetchuserdetails', verifyUserToken, async (req, res) => {
   try {
     const user_id = req.user.id;
     // fetching user details using user_id
-    const user = await User.findById(user_id).select("-password");
-    res.json(user);
+    const user = await User.findById(user_id).select('-password');
+    res.status(200).json({ success: true, user});
   } catch (err) {
-    // logging other errors to console and returning 500 Internal Server Error
-    console.error(err);
-    res.status(500).json({ error: "Internal Server Error" });
+    res.status(500).json({ success: false, error: 'Internal Server Error' });
   }
 });
 
@@ -150,4 +135,4 @@ router.get("/fetchuserdetails", fetchUserDetails, async (req, res) => {
 module.exports = router;
 
 // Note
-// each authtoken is unique per signup/login, even for the same user.
+// each authtoken is unique per signup/login, even for the same user

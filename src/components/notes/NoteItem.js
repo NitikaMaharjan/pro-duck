@@ -1,6 +1,6 @@
-import { useContext } from 'react';
+import { useContext } from "react";
 import ThemeContext from "../../context/theme/ThemeContext";
-import TextContext from '../../context/text/TextContext';
+import TextContext from "../../context/text/TextContext";
 
 export default function NoteItem(props) {
   

@@ -1,8 +1,8 @@
-import  { useEffect, useContext } from 'react';
-import { useNavigate } from 'react-router';
+import { useEffect, useContext } from "react";
+import { useNavigate } from "react-router";
 import ThemeContext from "../../context/theme/ThemeContext";
-import ProgressContext from '../../context/progress/ProgressContext';
-import TextContext from '../../context/text/TextContext';
+import ProgressContext from "../../context/progress/ProgressContext";
+import TextContext from "../../context/text/TextContext";
 
 export default function Home() {
 

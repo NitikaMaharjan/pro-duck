@@ -1,8 +1,12 @@
+import { useContext } from "react";
+import AlertContext from "../alert/AlertContext";
 import UserContext from "./UserContext";
 
 export default function UserState(props) {
 
-    const fetchUserInfo = async()=>{
+    const { showAlert } = useContext(AlertContext);
+
+    const fetchUserInfo = async() => {
         const response = await fetch("http://localhost:5000/api/auth/fetchuserdetails", {
             method: "GET",
             headers: {
@@ -10,8 +14,14 @@ export default function UserState(props) {
                 "authtoken": localStorage.getItem("token")
             }
         });
-        const fetchedUserInfo = await response.json();
-        localStorage.setItem("username", fetchedUserInfo.name);
+        const json = await response.json();
+        if(json.success===true){
+            localStorage.setItem("username", json.user.name);
+            return true;
+        }else{
+            showAlert("fail", json.error);
+            return false;
+        }
     }
 
     return(

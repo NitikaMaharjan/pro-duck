@@ -1,8 +1,8 @@
-import { useContext }from 'react';
+import { useContext }from "react";
 import { Link, useNavigate } from "react-router";
-import ThemeContext from '../../context/theme/ThemeContext';
-import AlertContext from '../../context/alert/AlertContext';
-import TextContext from '../../context/text/TextContext';
+import ThemeContext from "../../context/theme/ThemeContext";
+import AlertContext from "../../context/alert/AlertContext";
+import TextContext from "../../context/text/TextContext";
 
 export default function TopNavbar() {
 

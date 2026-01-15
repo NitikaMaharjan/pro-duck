@@ -1,11 +1,11 @@
-import  { useState, useEffect, useContext } from 'react';
+import { useState, useEffect, useContext } from "react";
 import { useNavigate } from "react-router";
 import CursorContext from "../context/cursor/CursorContext";
 import ThemeContext from "../context/theme/ThemeContext";
-import ProgressContext from '../context/progress/ProgressContext';
-import AlertContext from '../context/alert/AlertContext';
-import UserContext from '../context/user/UserContext';
-import TextContext from '../context/text/TextContext';
+import ProgressContext from "../context/progress/ProgressContext";
+import AlertContext from "../context/alert/AlertContext";
+import UserContext from "../context/user/UserContext";
+import TextContext from "../context/text/TextContext";
 
 export default function Login() {
 
@@ -61,26 +61,23 @@ export default function Login() {
     e.preventDefault();
     if(clientSideValidation()){
       const response = await fetch("http://localhost:5000/api/auth/login", {
-        method: 'POST',
+        method: "POST",
         headers: {
-            'Content-Type': 'application/json'
+            "Content-Type": "application/json"
         },
         body: JSON.stringify({email: credentials.email, password: credentials.password})
       });
-      if (!response.ok) {
-        showAlert("fail", "Server error. Please try again later!");
-        return;
-      }
       const json = await response.json();
-      if (json.success){
-          // Saving the auth token and redirect to home
-          localStorage.setItem("token", json.authtoken); 
-          await fetchUserInfo();
+      if(json.success){
+        // Saving the auth token and redirect to home
+        localStorage.setItem("token", json.authtoken); 
+        if(await fetchUserInfo()){
           handleCursorLeave();
           navigate("/");
           showAlert("success", "Welcome back, " + handleCapitalizeFirstLetter(localStorage.getItem("username")) + "!");
+        }
       }else{
-          showAlert("fail", "Invalid credentials. Please try again!");
+        showAlert("fail", json.error);
       }
     }
   }

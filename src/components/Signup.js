@@ -1,9 +1,9 @@
-import  { useState, useEffect, useContext } from 'react';
+import { useState, useEffect, useContext } from "react";
 import { useNavigate } from "react-router";
 import CursorContext from "../context/cursor/CursorContext";
 import ThemeContext from "../context/theme/ThemeContext";
-import ProgressContext from '../context/progress/ProgressContext';
-import AlertContext from '../context/alert/AlertContext';
+import ProgressContext from "../context/progress/ProgressContext";
+import AlertContext from "../context/alert/AlertContext";
 
 export default function Signup() {
   
@@ -103,23 +103,19 @@ export default function Signup() {
     e.preventDefault();
     if(clientSideValidation()){
       const response = await fetch("http://localhost:5000/api/auth/signup", {
-        method: 'POST',
+        method: "POST",
         headers: {
-            'Content-Type': 'application/json'
+            "Content-Type": "application/json"
         },
         body: JSON.stringify({name: credentials.name.trim(), email: credentials.email.trim().toLowerCase(), password: credentials.password.trim()})
       });
-      if (!response.ok) {
-        showAlert("fail", "Server error. Please try again later!");
-        return;
-      }
       const json = await response.json();
-      if (json.success){
-          handleCursorLeave();
-          navigate("/login");
-          showAlert("success", "Your account is ready!");
+      if(json.success){
+        handleCursorLeave();
+        navigate("/login");
+        showAlert("success", "Your account is ready!");
       }else{
-          showAlert("fail", "Invalid credentials. Please try again!");
+        showAlert("fail", json.error);
       }
     }
   }

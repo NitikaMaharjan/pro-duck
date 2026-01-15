@@ -1,10 +1,14 @@
+import { useContext, useState } from "react";
+import AlertContext from "../alert/AlertContext";
 import NoteContext from "./NoteContext";
-import { useState } from "react";
 
 export default function NoteState(props) {
+
+    const { showAlert } = useContext(AlertContext);
+
     const [notes, setNotes] = useState([]);
 
-    const fetchNote = async()=>{
+    const fetchNote = async() => {
         const response = await fetch("http://localhost:5000/api/notes/getnote", {
             method: "GET",
             headers: {
@@ -12,12 +16,16 @@ export default function NoteState(props) {
                 "authtoken": localStorage.getItem("token")
             }
         });
-        const fetchedNotes = await response.json();
-        setNotes(fetchedNotes);
+        const json = await response.json();
+        if(json.success){
+            setNotes(json.notes);
+        }else{
+            showAlert("fail", json.error);
+        }
     }
 
-    const addNote = async(title, description, tag)=>{
-        await fetch("http://localhost:5000/api/notes/addnote", {
+    const addNote = async(title, description, tag) => {
+        const response = await fetch("http://localhost:5000/api/notes/addnote", {
             method: "POST",
             headers: {
                 "Content-Type": "application/json",
@@ -25,12 +33,19 @@ export default function NoteState(props) {
             },
             body: JSON.stringify({title: title===""?"Untitled":title, description, tag: tag === ""?"General":tag})
         });
-        // setNotes(notes.concat(new_note));
-        fetchNote();
+        const json = await response.json();
+        if(json.success){
+            await fetchNote();
+            showAlert("success", "New note added successfully!");
+            return true;
+        }else{
+            showAlert("fail", json.error);
+            return false;
+        }
     }
 
-    const editNote = async(id, title, description, tag)=>{
-        await fetch(`http://localhost:5000/api/notes/updatenote/${id}`, {
+    const editNote = async(id, title, description, tag) => {
+        const response = await fetch(`http://localhost:5000/api/notes/updatenote/${id}`, {
             method: "PUT",
             headers: {
                 "Content-Type": "application/json",
@@ -38,24 +53,34 @@ export default function NoteState(props) {
             },
             body: JSON.stringify({title: title===""?"Untitled":title, description, tag: tag === ""?"General":tag})
         });
-        // setNotes(prevNotes =>
-        //     prevNotes.map(note =>
-        //     note._id === id ? {...note, title: title===""?"Untitled":title, description, tag: tag === ""?"General":tag} : note
-        //     )
-        // );
-        fetchNote();
+        const json = await response.json();
+        if(json.success){
+            await fetchNote();
+            showAlert("success", "Changes saved successfully!");
+            return true;
+        }else{
+            showAlert("fail", json.error);
+            return false;
+        }
     }
 
-    const deleteNote = async(id)=>{
-        await fetch(`http://localhost:5000/api/notes/deletenote/${id}`, {
+    const deleteNote = async(id) => {
+        const response = await fetch(`http://localhost:5000/api/notes/deletenote/${id}`, {
             method: "DELETE",
             headers: {
                 "Content-Type": "application/json",
                 "authtoken": localStorage.getItem("token")
             }
         });
-        // setNotes(notes.filter((note)=>{return note._id!==id}));
-        fetchNote();
+        const json = await response.json();
+        if(json.success){
+            await fetchNote();
+            showAlert("success", "Note deleted successfully!");
+            return true;
+        }else{
+            showAlert("fail", json.error);
+            return false;
+        }
     }
 
     return(

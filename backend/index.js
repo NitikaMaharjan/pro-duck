@@ -1,5 +1,5 @@
 require('dotenv').config();
-const connectToMongo = require("./db"); // importing connectToMongo() function from db.js file
+const connectToMongo = require('./db'); // importing connectToMongo() function from db.js file
 const express = require('express'); // importing express.js to create my own web server
 const cors = require('cors');
 

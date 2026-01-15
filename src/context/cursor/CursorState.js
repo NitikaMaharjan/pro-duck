@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect } from "react";
 import CursorContext from "./CursorContext";
 
 export default function CursorState(props) {
@@ -18,14 +18,14 @@ export default function CursorState(props) {
         }
     };
 
-    const handleCursorEnter = () =>{
+    const handleCursorEnter = () => {
         if (cursorDot && cursorOutline){
             cursorDot.style.backgroundColor = "white";
             cursorOutline.style.border = "2px solid white";
         }
     }
     
-    const handleCursorLeave = () =>{
+    const handleCursorLeave = () => {
         if (cursorDot && cursorOutline){
             cursorDot.style.backgroundColor = "#ffa8a8";
             cursorOutline.style.border = "2px solid #ffa8a8";

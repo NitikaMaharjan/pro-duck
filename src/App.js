@@ -1,21 +1,21 @@
-import './App.css';
-import { useContext } from 'react';
+import "./App.css";
+import { useContext } from "react";
 import { BrowserRouter, Routes, Route } from "react-router";
-import ThemeContext from './context/theme/ThemeContext';
-import ProgressState from './context/progress/ProgressState';
-import AlertState from './context/alert/AlertState';
-import UserState from './context/user/UserState';
-import TextState from './context/text/TextState';
+import ThemeContext from "./context/theme/ThemeContext";
+import ProgressState from "./context/progress/ProgressState";
+import AlertState from "./context/alert/AlertState";
+import UserState from "./context/user/UserState";
+import TextState from "./context/text/TextState";
 import NoteState from "./context/notes/NoteState";
-import SideNavbar from './components/navbar/SideNavbar';
-import TopNavbar from './components/navbar/TopNavbar';
-import Home from './components/home/Home';
-import Notes from './components/notes/Notes';
-import ToDo from './components/todo/ToDo';
-import BulletJournal from './components/bulletjournal/BulletJournal';
-import Tracker from './components/tracker/Tracker';
-import Login from './components/Login';
-import Signup from './components/Signup';
+import SideNavbar from "./components/navbar/SideNavbar";
+import TopNavbar from "./components/navbar/TopNavbar";
+import Home from "./components/home/Home";
+import Notes from "./components/notes/Notes";
+import ToDo from "./components/todo/ToDo";
+import BulletJournal from "./components/bulletjournal/BulletJournal";
+import Tracker from "./components/tracker/Tracker";
+import Login from "./components/Login";
+import Signup from "./components/Signup";
 
 function App() {
 
@@ -56,13 +56,13 @@ function App() {
                     </div>
                   </div>
                   <Routes>
-                    <Route path='/' element={<Home/>}/>
-                    <Route path='/notes' element={<Notes/>}/>
-                    <Route path='/todolists' element={<ToDo/>}/>
-                    <Route path='/bulletjournal' element={<BulletJournal/>}/>
-                    <Route path='/tracker' element={<Tracker/>}/>
-                    <Route path='/login' element={<Login/>}/>
-                    <Route path='/signup' element={<Signup/>}/>
+                    <Route path="/" element={<Home/>}/>
+                    <Route path="/notes" element={<Notes/>}/>
+                    <Route path="/todolists" element={<ToDo/>}/>
+                    <Route path="/bulletjournal" element={<BulletJournal/>}/>
+                    <Route path="/tracker" element={<Tracker/>}/>
+                    <Route path="/login" element={<Login/>}/>
+                    <Route path="/signup" element={<Signup/>}/>
                   </Routes>
                 </BrowserRouter>
               </NoteState>

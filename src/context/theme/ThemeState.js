@@ -5,7 +5,7 @@ export default function ThemeState(props) {
 
     const [theme, setTheme] = useState(localStorage.getItem("mode")?localStorage.getItem("mode"):"light");
 
-    const ChangeTheme = () =>{
+    const ChangeTheme = () => {
         if (theme==="light"){
           localStorage.setItem("mode", "dark");
           localStorage.setItem("bgColor", "#0e1011");

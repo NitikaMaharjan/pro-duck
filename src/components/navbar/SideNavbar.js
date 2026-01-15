@@ -1,7 +1,7 @@
-import { useContext } from 'react';
+import { useContext } from "react";
 import { Link, useLocation } from "react-router";
 import CursorContext from "../../context/cursor/CursorContext";
-import ThemeContext from '../../context/theme/ThemeContext';
+import ThemeContext from "../../context/theme/ThemeContext";
 
 export default function SideNavbar() {
 

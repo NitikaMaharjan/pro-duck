@@ -1,13 +1,13 @@
-import { useState, useEffect, useContext, useRef } from 'react';
+import { useState, useEffect, useContext, useRef } from "react";
 import CursorContext from "../../context/cursor/CursorContext";
-import ThemeContext from '../../context/theme/ThemeContext';
-import ProgressContext from '../../context/progress/ProgressContext';
-import AlertContext from '../../context/alert/AlertContext';
-import TextContext from '../../context/text/TextContext';
+import ThemeContext from "../../context/theme/ThemeContext";
+import ProgressContext from "../../context/progress/ProgressContext";
+import AlertContext from "../../context/alert/AlertContext";
+import TextContext from "../../context/text/TextContext";
 import NoteContext from "../../context/notes/NoteContext";
-import Throbber from '../Throbber';
-import NoteItem from './NoteItem';
-import ChipTags from './ChipTags';
+import Throbber from "../Throbber";
+import NoteItem from "./NoteItem";
+import ChipTags from "./ChipTags";
 
 export default function Note() {
 
@@ -56,7 +56,7 @@ export default function Note() {
         setActiveModal(myModal);
     };
 
-    const handleChange = (e) =>{
+    const handleChange = (e) => {
         setSelectedNote({...selectedNote, [e.target.name]: e.target.value.trimStart()});
     }
 
@@ -102,22 +102,22 @@ export default function Note() {
         return true;
     }
 
-    const handleSubmit = async()=>{
+    const handleSubmit = () => {
         if(NoteValidation()){
-            await editNote(selectedNote._id, selectedNote.title===""?"Untitled":selectedNote.title.trim(), selectedNote.description===""?" ":selectedNote.description.trim(), selectedNote.tag===""?"General":selectedNote.tag.trim());
-            await fetchNote();
-            handleCursorLeave();
-            activeModal.hide();
-            showAlert("success", "Changes saved!");
+            if(editNote(selectedNote._id, selectedNote.title===""?"Untitled":selectedNote.title.trim(), selectedNote.description===""?" ":selectedNote.description.trim(), selectedNote.tag===""?"General":selectedNote.tag.trim())){
+                handleCursorLeave();
+                activeModal.hide();
+            }
         }
     }
 
     const handleDeleteNote = (id) => {
         let ans = window.confirm("Are you sure?");
         if (ans) {
-            deleteNote(id); 
-            activeModal.hide(); 
-            showAlert("success", "Note deleted successfully!");
+            if(deleteNote(id)){
+                activeModal.hide(); 
+            }
+            
         }
     }
 
@@ -243,13 +243,13 @@ export default function Note() {
     return (
         <>  
             {notes.length === 0?
-                <p style={{margin: "0px",padding: "40px 0px 0px 0px", textAlign: "center", color: `${theme==="light"?"black":"white"}`}}>Want to share a quick thought? Tap on 'Add Note' to get started!</p>
+                <p style={{margin: "0px",padding: "40px 0px 0px 0px", textAlign: "center", color: `${theme==="light"?"black":"white"}`}}>Want to share a quick thought? Tap on "Add Note" to get started!</p>
             :
                 <>
                     <div className="d-flex justify-content-center">
                         <form>
                             <div className="d-flex align-items-center" style={{width: "500px", padding: "6px 12px", borderRadius: "6px", backgroundColor: `${theme==="light"?"white":"#212529"}`, border: `${theme==="light"?"1px solid #bebebe":"1px solid #424549"}`}}> 
-                                <img src="/icons/search.png" height="24px" width="24px" alt="search icon"/>&nbsp;&nbsp;
+                                <img src="/icons/search.png" height="20px" width="20px" alt="search icon"/>&nbsp;&nbsp;
                                 <input id="search" name="search" className="search-bar-input" placeholder="Search notes" value={keyword} onChange={handleKeywordChange} style={{backgroundColor: `${theme==="light"?"white":"#212529"}`, color: `${theme==="light"?"black":"white"}`}}/>&nbsp;&nbsp;
                                 <img src="/icons/close3.png" height="14px" width="14px" alt="close icon" onClick={()=>{clearText("keyword")}} style={{opacity: `${keyword===""?"0":"1"}`}}/>
                             </div>
