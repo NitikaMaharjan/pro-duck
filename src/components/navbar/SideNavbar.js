@@ -11,9 +11,9 @@ export default function SideNavbar() {
     const {theme} = useContext(ThemeContext);
   
     return (
-        <div style={{margin: "24px", padding: "12px", borderRadius: "6px", boxShadow: "0px 2px 5px rgba(0, 0, 0, 0.15)", backgroundColor: `${theme==="light"?"white":"#212529"}`, border: `${theme==="light"?"1px solid rgba(0, 0, 0, 0.15)":"1px solid #424549"}`}}>
-            <div className="d-flex align-items-center gap-2" style={{borderBottom: `${theme==="light"?"1px solid #bebebeff":"1px solid #424549"}`, paddingBottom: "12px", marginBottom: "12px"}}>
-                <img src={`${theme==="light"?"logo.png":"logo2.png"}`} style={{height: "38px", width: "38px"}}/>
+        <div style={{margin: "24px", padding: "12px", borderRadius: "6px", boxShadow: "0px 2px 5px rgba(0, 0, 0, 0.15)", backgroundColor: `${theme==="light"?"white":"#212529"}`, border: `${theme==="light"?"1px solid #bebebe":"1px solid #424549"}`}}>
+            <div className="d-flex align-items-center gap-2" style={{borderBottom: `${theme==="light"?"1px solid #bebebe":"1px solid #424549"}`, paddingBottom: "12px", marginBottom: "12px"}}>
+                <img src={`${theme==="light"?"logo.png":"logo2.png"}`} style={{height: "24px", width: "24px"}}/>
                 <h5 style={{margin: "0px", color: `${theme==="light"?"black":"white"}`}}>Aki Notes</h5>
             </div>
                 

@@ -94,7 +94,7 @@ export default function Login() {
     <div className="content" style={{color: `${theme==="light"?"black":"white"}`, paddingTop: "10px"}}>
       <h5 style={{textAlign: "center"}}>Hey there, welcome back!</h5>
       <div className="add-note-form">
-        <div style={{padding: "20px", width: "400px", backgroundColor: `${theme==="light"?"white":"#212529"}`, border: `${theme==="light"?"1px solid rgba(0, 0, 0, 0.15)":"1px solid #424549"}`, borderRadius: "6px", boxShadow: "0px 2px 5px rgba(0, 0, 0, 0.15)"}}>
+        <div style={{padding: "20px", width: "400px", backgroundColor: `${theme==="light"?"white":"#212529"}`, border: `${theme==="light"?"1px solid #bebebe":"1px solid #424549"}`, borderRadius: "6px", boxShadow: "0px 2px 5px rgba(0, 0, 0, 0.15)"}}>
           <form data-bs-theme={`${theme==="light"?"light":"dark"}`}>
             <div className="form-group mb-2">
                 <div className="d-flex align-items-center gap-2 mb-1">
@@ -117,7 +117,7 @@ export default function Login() {
                 </div>
             </div>
             <div style={{width: "100%", display: "flex", justifyContent: "center"}}>
-                <button type="submit" className="add-note-btn" onClick={handleSubmit} onMouseEnter={handleCursorEnter} onMouseLeave={handleCursorLeave}>Log in</button>
+                <button type="submit" className="submit-button" onClick={handleSubmit} onMouseEnter={handleCursorEnter} onMouseLeave={handleCursorLeave}>Log in</button>
             </div>
           </form>
         </div>

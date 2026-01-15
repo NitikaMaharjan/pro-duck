@@ -243,12 +243,12 @@ export default function Note() {
     return (
         <>  
             {notes.length === 0?
-                <p style={{margin: "0px",padding: "40px 0px 0px 0px", textAlign: "center", color: `${theme==="light"?"#5e5959":"rgb(200, 200, 200)"}`}}>Want to share a quick thought? Tap on 'Add Note' to get started!</p>
+                <p style={{margin: "0px",padding: "40px 0px 0px 0px", textAlign: "center", color: `${theme==="light"?"black":"white"}`}}>Want to share a quick thought? Tap on 'Add Note' to get started!</p>
             :
                 <>
                     <div className="d-flex justify-content-center">
                         <form>
-                            <div className="d-flex align-items-center" style={{width: "500px", padding: "6px 12px", borderRadius: "6px", backgroundColor: `${theme==="light"?"white":"#212529"}`, border: `${theme==="light"?"1px solid rgba(0, 0, 0, 0.15)":"1px solid #424549"}`}}> 
+                            <div className="d-flex align-items-center" style={{width: "500px", padding: "6px 12px", borderRadius: "6px", backgroundColor: `${theme==="light"?"white":"#212529"}`, border: `${theme==="light"?"1px solid #bebebe":"1px solid #424549"}`}}> 
                                 <img src="/icons/search.png" height="24px" width="24px" alt="search icon"/>&nbsp;&nbsp;
                                 <input id="search" name="search" className="search-bar-input" placeholder="Search notes" value={keyword} onChange={handleKeywordChange} style={{backgroundColor: `${theme==="light"?"white":"#212529"}`, color: `${theme==="light"?"black":"white"}`}}/>&nbsp;&nbsp;
                                 <img src="/icons/close3.png" height="14px" width="14px" alt="close icon" onClick={()=>{clearText("keyword")}} style={{opacity: `${keyword===""?"0":"1"}`}}/>
@@ -323,15 +323,15 @@ export default function Note() {
                             </div>
                         </div>
                         <div style={{display: "flex", alignItems: "center", margin: "0px", padding: "0px 16px"}}>
-                            <h6 className="card-subtitle text-body-secondary" style={{margin: "0px", padding: "0px", color: "#212529bf"}}>{handleCapitalizeFirstLetter(selectedNote?.tag)}</h6>
-                            <h6 className="card-subtitle text-body-secondary mx-2" style={{margin: "0px", padding: "0px", color: "#212529bf"}}>|</h6>
-                            <p className="card-subtitle text-body-secondary" style={{margin: "0px", padding: "0px", color: "#212529bf"}}>{giveMeDay(selectedNote?.date)}</p>                           
-                            <h6 className="card-subtitle text-body-secondary mx-2" style={{margin: "0px", padding: "0px", color: "#212529bf"}}>|</h6>
-                            <p className="card-subtitle text-body-secondary" style={{margin: "0px", padding: "0px", color: "#212529bf"}}>{giveMeTime(selectedNote?.date)}</p>
-                            <h6 className="card-subtitle text-body-secondary mx-2" style={{margin: "0px", padding: "0px", color: "#212529bf"}}>|</h6>
-                            <p className="card-subtitle text-body-secondary" style={{margin: "0px", padding: "0px", color: "#212529bf"}}>{calculateCharacters(selectedNote?.description)}</p>
-                            <h6 className="card-subtitle text-body-secondary mx-2" style={{margin: "0px", padding: "0px", color: "#212529bf"}}>|</h6>
-                            <p className="card-subtitle text-body-secondary" style={{margin: "0px", padding: "0px", color: "#212529bf"}}>{calculateWords(selectedNote?.description)}</p>
+                            <h6 className="card-subtitle text-body-secondary" style={{margin: "0px", padding: "0px", color: "#212529"}}>{handleCapitalizeFirstLetter(selectedNote?.tag)}</h6>
+                            <h6 className="card-subtitle text-body-secondary mx-2" style={{margin: "0px", padding: "0px", color: "#212529"}}>|</h6>
+                            <p className="card-subtitle text-body-secondary" style={{margin: "0px", padding: "0px", color: "#212529"}}>{giveMeDay(selectedNote?.date)}</p>                           
+                            <h6 className="card-subtitle text-body-secondary mx-2" style={{margin: "0px", padding: "0px", color: "#212529"}}>|</h6>
+                            <p className="card-subtitle text-body-secondary" style={{margin: "0px", padding: "0px", color: "#212529"}}>{giveMeTime(selectedNote?.date)}</p>
+                            <h6 className="card-subtitle text-body-secondary mx-2" style={{margin: "0px", padding: "0px", color: "#212529"}}>|</h6>
+                            <p className="card-subtitle text-body-secondary" style={{margin: "0px", padding: "0px", color: "#212529"}}>{calculateCharacters(selectedNote?.description)}</p>
+                            <h6 className="card-subtitle text-body-secondary mx-2" style={{margin: "0px", padding: "0px", color: "#212529"}}>|</h6>
+                            <p className="card-subtitle text-body-secondary" style={{margin: "0px", padding: "0px", color: "#212529"}}>{calculateWords(selectedNote?.description)}</p>
                         </div>
                         <div className="modal-body">
                             {selectedNote?.description}
@@ -368,7 +368,7 @@ export default function Note() {
                             </div>                          
                         </div>                       
                         <div className="modal-body" style={{display: "flex", justifyContent: "center", paddingTop: "4px"}}>
-                            <button className="add-note-btn" onClick={handleSubmit} onMouseEnter={handleCursorEnter} onMouseLeave={handleCursorLeave}>Edit Note</button>
+                            <button className="submit-button" onClick={handleSubmit} onMouseEnter={handleCursorEnter} onMouseLeave={handleCursorLeave}>Edit Note</button>
                         </div>                       
                     </div>
                 </div>

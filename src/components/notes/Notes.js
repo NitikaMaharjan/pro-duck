@@ -41,7 +41,7 @@ export default function Notes() {
       {switchContent==="yourNotes"?
         <div>
           <ShowNote/>
-          <button className="add-btn" onClick={() => {ChangeContent(2); handleCursorLeave();}} onMouseEnter={handleCursorEnter} onMouseLeave={handleCursorLeave}>&#43;&nbsp;&nbsp;Add Note</button>
+          <button className="add-note-button" onClick={() => {ChangeContent(2); handleCursorLeave();}} onMouseEnter={handleCursorEnter} onMouseLeave={handleCursorLeave}>&#43;&nbsp;&nbsp;Add Note</button>
         </div>
       : 
         <div>
