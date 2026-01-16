@@ -6,7 +6,7 @@ const cors = require('cors');
 connectToMongo(); // calling connectToMongo() function to establish connection with database mongoDB
 
 const app = express(); // creating my web server app (Express application object)
-const port = process.env.PORT || 5000; // defining port address(number) of my web server app where it will listen for incoming requests
+const port = process.env.PORT; // defining port address(number) of my web server app where it will listen for incoming requests
 
 app.use(express.json()); // it tells my web server app to automatically convert the incoming JSON string into JavaScript object so that my web server can easily access it using req.body
 app.use(cors());

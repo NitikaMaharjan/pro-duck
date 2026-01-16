@@ -64,7 +64,7 @@ router.post('/signup', [
     // responding with success and authentication token (in JSON format)
     res.status(201).json({ success: true, authtoken });
 
-  } catch (err) {
+  } catch (error) {
     res.status(500).json({ success: false, error: 'Internal Server Error' });
   }
 });
@@ -113,7 +113,7 @@ router.post('/login', [
     // responding with success and authentication token (in JSON format)
     res.status(200).json({ success: true, authtoken });
 
-  } catch (err) {
+  } catch (error) {
     res.status(500).json({ success: false, error: 'Internal Server Error' });
   }
 });
@@ -126,7 +126,7 @@ router.get('/fetchuserdetails', verifyUserToken, async (req, res) => {
     // fetching user details using user_id
     const user = await User.findById(user_id).select('-password');
     res.status(200).json({ success: true, user});
-  } catch (err) {
+  } catch (error) {
     res.status(500).json({ success: false, error: 'Internal Server Error' });
   }
 });

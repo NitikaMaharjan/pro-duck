@@ -132,48 +132,47 @@ export default function Signup() {
         <div style={{padding: "20px", width: "400px", backgroundColor: `${theme==="light"?"white":"#212529"}`, border: `${theme==="light"?"1px solid #bebebe":"1px solid #424549"}`, borderRadius: "6px", boxShadow: "0px 2px 5px rgba(0, 0, 0, 0.15)"}}>
           <form data-bs-theme={`${theme==="light"?"light":"dark"}`}>
             <div className="form-group mb-2">
-                <div className="d-flex align-items-center gap-2 mb-1">
-                  <img src={`${theme==="light"?"/icons/user_black.png":"/icons/user_white.png"}`} height="16px" width="17px" alt="user icon"/>
-                  <label htmlFor="name" style={{fontWeight: "500"}}>Username</label>
-                </div>
-                <div className="d-flex align-items-center">
-                  <input type="text" className="form-control" id="name" name="name" placeholder="Enter username" onChange={handleChange} autoComplete="on" value={credentials.name}/>
-                  <img src={`${theme==="light"?"/icons/close.png":"/icons/close2.png"}`} height="18px" width="18px" alt="close icon" onClick={()=>{clearText("name");}} style={{margin: "0px 2px 0px 10px", opacity: `${credentials.name===""?"0":"1"}`}}/>
-                </div>
+              <div className="d-flex align-items-center gap-2 mb-1">
+                <img src={`${theme==="light"?"/icons/user_black.png":"/icons/user_white.png"}`} height="16px" width="17px" alt="user icon"/>
+                <label htmlFor="name" style={{fontWeight: "500"}}>Username</label>
+              </div>
+              <div className="d-flex align-items-center">
+                <input type="text" className="form-control" id="name" name="name" placeholder="Enter username" onChange={handleChange} autoComplete="on" value={credentials.name}/>
+                <img src={`${theme==="light"?"/icons/close.png":"/icons/close2.png"}`} height="18px" width="18px" alt="close icon" onClick={()=>{clearText("name");}} style={{margin: "0px 2px 0px 10px", opacity: `${credentials.name===""?"0":"1"}`}}/>
+              </div>
             </div>
             <div className="form-group mb-2">
-                <div className="d-flex align-items-center gap-2 mb-1">
-                  <img src={`${theme==="light"?"/icons/email_black.png":"/icons/email_white.png"}`} height="18px" width="18px" alt="email icon"/>
-                  <label htmlFor="email" style={{fontWeight: "500"}}>Email</label>
-                </div>
-                <div className="d-flex align-items-center">
-                  <input type="email" className="form-control" id="email" name="email" placeholder="Enter email" onChange={handleChange} autoComplete="on" value={credentials.email}/>
-                  <img src={`${theme==="light"?"/icons/close.png":"/icons/close2.png"}`} height="18px" width="18px" alt="close icon" onClick={()=>{clearText("email");}} style={{margin: "0px 2px 0px 10px", opacity: `${credentials.email===""?"0":"1"}`}}/>
-                </div>
+              <div className="d-flex align-items-center gap-2 mb-1">
+                <img src={`${theme==="light"?"/icons/email_black.png":"/icons/email_white.png"}`} height="18px" width="18px" alt="email icon"/>
+                <label htmlFor="email" style={{fontWeight: "500"}}>Email</label>
+              </div>
+              <div className="d-flex align-items-center">
+                <input type="email" className="form-control" id="email" name="email" placeholder="Enter email" onChange={handleChange} autoComplete="on" value={credentials.email}/>
+                <img src={`${theme==="light"?"/icons/close.png":"/icons/close2.png"}`} height="18px" width="18px" alt="close icon" onClick={()=>{clearText("email");}} style={{margin: "0px 2px 0px 10px", opacity: `${credentials.email===""?"0":"1"}`}}/>
+              </div>
             </div>
             <div className="form-group mb-2">
-                <div className="d-flex align-items-center gap-2 mb-1">
-                  <img src={`${passwordType==="password"?theme==="light"?"/icons/eye_hide_black.png":"/icons/eye_hide_white.png":theme==="light"?"/icons/eye_black.png":"/icons/eye_white.png"}`} height="18px" width="18px" alt="eye icon" onClick={changePasswordType}/>
-                  <label htmlFor="password" style={{fontWeight: "500"}}>Password</label>
-                </div>
-                <div className="d-flex align-items-center">
-                  <input type={passwordType} className="form-control" id="password" name="password" placeholder="Enter password" onChange={handleChange} autoComplete="on" value={credentials.password}/>
-                  <img src={`${theme==="light"?"/icons/close.png":"/icons/close2.png"}`} height="18px" width="18px" alt="close icon" onClick={()=>{clearText("password");}} style={{margin: "0px 2px 0px 10px", opacity: `${credentials.password===""?"0":"1"}`}}/>
-                </div>
-                
+              <div className="d-flex align-items-center gap-2 mb-1">
+                <img src={`${passwordType==="password"?theme==="light"?"/icons/eye_hide_black.png":"/icons/eye_hide_white.png":theme==="light"?"/icons/eye_black.png":"/icons/eye_white.png"}`} height="18px" width="18px" alt="eye icon" onClick={changePasswordType}/>
+                <label htmlFor="password" style={{fontWeight: "500"}}>Password</label>
+              </div>
+              <div className="d-flex align-items-center">
+                <input type={passwordType} className="form-control" id="password" name="password" placeholder="Enter password" onChange={handleChange} autoComplete="on" value={credentials.password}/>
+                <img src={`${theme==="light"?"/icons/close.png":"/icons/close2.png"}`} height="18px" width="18px" alt="close icon" onClick={()=>{clearText("password");}} style={{margin: "0px 2px 0px 10px", opacity: `${credentials.password===""?"0":"1"}`}}/>
+              </div>                
             </div>
             <div className="form-group mb-3">
-                <div className="d-flex align-items-center gap-2 mb-1">
-                  <img src={`${confirmPasswordType==="password"?theme==="light"?"/icons/eye_hide_black.png":"/icons/eye_hide_white.png":theme==="light"?"/icons/eye_black.png":"/icons/eye_white.png"}`} height="18px" width="18px" alt="eye icon" onClick={changeConfirmPasswordType}/>
-                  <label htmlFor="confirm_password" style={{fontWeight: "500"}}>Confirm Password</label>
-                </div>
-                <div className="d-flex align-items-center">
-                  <input type={confirmPasswordType} className="form-control" id="confirm_password" name="confirm_password" placeholder="Enter confirm password" onChange={handleChange} autoComplete="on" value={credentials.confirm_password}/>
-                  <img src={`${theme==="light"?"/icons/close.png":"/icons/close2.png"}`} height="18px" width="18px" alt="close icon" onClick={()=>{clearText("confirm_password");}} style={{margin: "0px 2px 0px 10px", opacity: `${credentials.confirm_password===""?"0":"1"}`}}/>
-                </div>
+              <div className="d-flex align-items-center gap-2 mb-1">
+                <img src={`${confirmPasswordType==="password"?theme==="light"?"/icons/eye_hide_black.png":"/icons/eye_hide_white.png":theme==="light"?"/icons/eye_black.png":"/icons/eye_white.png"}`} height="18px" width="18px" alt="eye icon" onClick={changeConfirmPasswordType}/>
+                <label htmlFor="confirm_password" style={{fontWeight: "500"}}>Confirm Password</label>
+              </div>
+              <div className="d-flex align-items-center">
+                <input type={confirmPasswordType} className="form-control" id="confirm_password" name="confirm_password" placeholder="Enter confirm password" onChange={handleChange} autoComplete="on" value={credentials.confirm_password}/>
+                <img src={`${theme==="light"?"/icons/close.png":"/icons/close2.png"}`} height="18px" width="18px" alt="close icon" onClick={()=>{clearText("confirm_password");}} style={{margin: "0px 2px 0px 10px", opacity: `${credentials.confirm_password===""?"0":"1"}`}}/>
+              </div>
             </div>
             <div style={{width: "100%", display: "flex", justifyContent: "center"}}>
-                <button type="submit" className="submit-button" onClick={handleSubmit} onMouseEnter={handleCursorEnter} onMouseLeave={handleCursorLeave}>Sign up</button>
+              <button type="submit" className="submit-button" onClick={handleSubmit} onMouseEnter={handleCursorEnter} onMouseLeave={handleCursorLeave}>Sign up</button>
             </div>
           </form>
         </div>

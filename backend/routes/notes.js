@@ -10,7 +10,7 @@ router.get('/getnote', verifyUserToken, async (req, res) => {
   try {
     const notes = await Notes.find({ user: user_id });
     res.status(200).json({ success: true, notes });
-  } catch (err) {
+  } catch (error) {
     res.status(500).json({ success: false, error: 'Internal Server Error' });
   }
 });
@@ -30,7 +30,7 @@ router.post('/addnote', verifyUserToken, async (req, res) => {
     });
 
     res.status(201).json({ success: true });
-  } catch (err) {
+  } catch (error) {
     res.status(500).json({ success: false, error: 'Internal Server Error' });
   }
 });
@@ -72,7 +72,7 @@ router.put('/updatenote/:id', verifyUserToken, async (req, res) => {
 
     await Notes.findByIdAndUpdate(req.params.id, { $set: new_note }, { new: true });
     res.status(200).json({ success: true });
-  } catch (err) {
+  } catch (error) {
     res.status(500).json({ success: false, error: 'Internal Server Error' });
   }
 });
@@ -98,7 +98,7 @@ router.delete('/deletenote/:id', verifyUserToken, async (req, res) => {
 
     await Notes.findByIdAndDelete(req.params.id);
     res.status(200).json({ success: true });
-  } catch (err) {
+  } catch (error) {
     res.status(500).json({ success: false, error: 'Internal Server Error' });
   }
 });

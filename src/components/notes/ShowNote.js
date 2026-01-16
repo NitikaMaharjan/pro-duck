@@ -317,9 +317,9 @@ export default function Note() {
                         <div className="modal-header d-flex justify-content-between" style={{border: "none"}}>
                             <h5 className="modal-title" id="noteDetailModalLabel" style={{color: `${theme==="light"?"black":"white"}`}}>{selectedNote?.title}</h5>
                             <div>
-                                <button className="modal-btn" onClick={()=>{activeModal.hide(); OpenEditModal();}}><img src={`${theme==="light"?"/icons/edit.png":"/icons/edit2.png"}`} alt="edit icon" title="edit"/></button>
-                                <button className="modal-btn" onClick={()=>{handleDeleteNote(selectedNote?._id)}}><img src={`${theme==="light"?"/icons/delete.png":"/icons/delete2.png"}`} alt="delete icon" title="delete"/></button>
-                                <button className="modal-btn" data-bs-dismiss="modal" aria-label="Close"><img src={`${theme==="light"?"/icons/close.png":"/icons/close2.png"}`} alt="close icon" title="close"/></button>
+                                <button className="modal-btn" onClick={()=>{activeModal.hide(); OpenEditModal();}}><img src={`${theme==="light"?"/icons/edit.png":"/icons/edit2.png"}`} alt="edit icon"/></button>
+                                <button className="modal-btn" onClick={()=>{handleDeleteNote(selectedNote?._id)}}><img src={`${theme==="light"?"/icons/delete.png":"/icons/delete2.png"}`} alt="delete icon"/></button>
+                                <button className="modal-btn" data-bs-dismiss="modal" aria-label="Close"><img src={`${theme==="light"?"/icons/close.png":"/icons/close2.png"}`} alt="close icon"/></button>
                             </div>
                         </div>
                         <div style={{display: "flex", alignItems: "center", margin: "0px", padding: "0px 16px"}}>
@@ -344,7 +344,7 @@ export default function Note() {
                 <div className="modal-dialog modal-dialog-centered modal-lg" role="document">
                     <div className="modal-content">
                         <div className="modal-header justify-content-end" style={{border: "none", paddingBottom: "0px"}}>
-                            <button className="modal-btn" data-bs-dismiss="modal" aria-label="Close"><img src={`${theme==="light"?"/icons/close.png":"/icons/close2.png"}`} alt="edit" title="close"/></button>
+                            <button className="modal-btn" data-bs-dismiss="modal" aria-label="Close"><img src={`${theme==="light"?"/icons/close.png":"/icons/close2.png"}`} alt="close icon"/></button>
                         </div>
                         <div className="modal-body" style={{paddingTop: "0px", paddingBottom: "6px"}}>
                             <label htmlFor="title" className="mb-1" style={{fontWeight: "500"}}>Title</label>
