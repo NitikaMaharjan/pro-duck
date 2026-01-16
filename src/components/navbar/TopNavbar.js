@@ -32,11 +32,11 @@ export default function TopNavbar() {
 
       <div style={{display: "flex", alignItems: "center", gap: "8px"}}>
         {localStorage.getItem("token")?
-          <button className={`login-btn${theme==="light"?"":"-dark"}`} onClick={handleLogout}>Log out</button>
+          <button className={`login-button${theme==="light"?"":"-dark"}`} onClick={handleLogout}>Log out</button>
         :
           <>
-            <Link to="/login"><button className={`login-btn${theme==="light"?"":"-dark"}`}>Log in</button></Link>
-            <Link to="/signup"><button className={`signup-btn${theme==="light"?"":"-dark"}`}>Sign up</button></Link>
+            <Link to="/login"><button className={`login-button${theme==="light"?"":"-dark"}`}>Log in</button></Link>
+            <Link to="/signup"><button className={`signup-button${theme==="light"?"":"-dark"}`}>Sign up</button></Link>
           </>
         }
         

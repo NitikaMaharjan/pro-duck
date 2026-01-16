@@ -89,7 +89,7 @@
 }
 
 /* light theme */
-.login-btn{
+.login-button{
     padding: 4px 16px;
     font-size: 15px;
     border: none;
@@ -98,14 +98,14 @@
     transition: 0.3s;
 }
 
-.login-btn:hover{
+.login-button:hover{
     color: #424549;
     cursor: none;
 }
 
-.signup-btn{
+.signup-button{
     padding: 4px 16px;
-    border-radius: 8px;
+    border-radius: 6px;
     font-size: 15px;
     border: 1px solid black;
     background-color: transparent;
@@ -113,14 +113,14 @@
     transition: 0.3s;
 }
 
-.signup-btn:hover{
+.signup-button:hover{
     border: 1px solid #424549;
     color: #424549;
     cursor: none;
 }
 
 /* dark theme */
-.login-btn-dark{
+.login-button-dark{
     padding: 4px 16px;
     font-size: 15px;
     border: none;
@@ -129,14 +129,14 @@
     transition: 0.3s;
 }
 
-.login-btn-dark:hover{
+.login-button-dark:hover{
     color: #bebebe;
     cursor: none;
 }
 
-.signup-btn-dark{
+.signup-button-dark{
     padding: 4px 16px;
-    border-radius: 8px;
+    border-radius: 6px;
     font-size: 15px;
     border: 1px solid white;
     background-color: transparent;
@@ -144,7 +144,7 @@
     transition: 0.3s;
 }
 
-.signup-btn-dark:hover{
+.signup-button-dark:hover{
     border: 1px solid #bebebe;
     color: #bebebe;
     cursor: none;
@@ -154,7 +154,7 @@
     display: flex;
     height: 40px;
     width: 40px;
-    border-radius: 25px;
+    border-radius: 50%;
     align-items: center;
     justify-content: center;
 }
@@ -172,23 +172,23 @@
 
 /* notes page */
 /* back button */
-.back-btn, .back-btn-dark{
-    padding: 4px 12px;
-    border-radius: 8px;
+.back-button, .back-button-dark{
+    padding: 4px 16px;
+    border-radius: 6px;
     font-size: 14px;
 }
 
-.back-btn:hover, .back-btn-dark:hover{
+.back-button:hover, .back-button-dark:hover{
     cursor: none;
 }
 
-.back-btn{
+.back-button{
     border: 1px solid #bebebe;
     background-color: white;    
     color: #424549;
 }
 
-.back-btn-dark{
+.back-button-dark{
     border: 1px solid #424549;
     background-color: #212529;    
     color: #bebebe;
@@ -207,8 +207,8 @@
 }
 
 .submit-button{
-    padding: 4px 20px;
-    border-radius: 24px;
+    padding: 4px 16px;
+    border-radius: 25px;
     font-size: 15px;
     border: 1px solid #ffcece;
     background-color: #ffcece;
@@ -226,9 +226,7 @@
 .notes-collection{
     display: grid;
     grid-template-columns: repeat(4, 1fr);
-    justify-items: center;
     gap: 24px;
-    margin: 40px 0px;
 }
 
 .add-note-button{
@@ -238,12 +236,11 @@
     bottom: 32px;
     right: 490px;
     z-index: 1;
-    padding: 6px 20px;
+    padding: 4px 16px;
     font-size: 16px;
     border: 1px solid #ffcece;
     background-color: #ffcece;
-    border-radius: 24px;
-    box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.15);
+    border-radius: 25px;
     transition: 0.3s;
 }
 
@@ -255,6 +252,16 @@
 
 /* up arrow */
 .up-arrow{
+    position: fixed;
+    bottom: 32px;
+    right: 40px;
+    padding: 6px 16px;
+    color: black;
+    font-size: 16px;
+    text-decoration: none;
+    border: 1px solid #ffcece;
+    background-color: #ffcece;
+    border-radius: 50%;
     opacity: 0;
     transition: opacity 0.2s ease;
 }
@@ -263,7 +270,7 @@
     position: fixed;
     bottom: 32px;
     right: 40px;
-    padding: 6px 15px;
+    padding: 6px 16px;
     color: black;
     font-size: 16px;
     text-decoration: none;
@@ -271,7 +278,6 @@
     background-color: #ffcece;
     border-radius: 50%;
     opacity: 1;
-    box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.15);
     transition: 0.3s;
 }
 
@@ -297,8 +303,8 @@ input[type="search"]::-webkit-search-cancel-button {
 
 /* chip */
 .chip-light, .chip-dark {
-    padding: 4px 8px;
-    border-radius: 8px;
+    padding: 4px 10px;
+    border-radius: 6px;
     font-size: 14px;
 }
 
@@ -341,21 +347,20 @@ input[type="search"]::-webkit-search-cancel-button {
 }
 
 /* edit modal */
-.modal-btn{
+.modal-button{
     background-color: transparent;
-    border-radius: 25px;
+    border-radius: 50%;
     border: none;
-    padding: 0px;
     height: 40px;
     width: 40px;
 }
 
-.modal-btn img{
+.modal-button img{
     height: 22px;
     width: 22px;
 }
 
-.modal-btn:hover{
+.modal-button:hover{
     background-color: rgba(128, 128, 128, 0.300);
     cursor: none;
 }
