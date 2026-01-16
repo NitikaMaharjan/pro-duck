@@ -84,7 +84,7 @@ export default function NoteState(props) {
     }
 
     return(
-        <NoteContext.Provider value={{ notes, fetchNote, addNote, editNote, deleteNote }}>
+        <NoteContext.Provider value={{notes, fetchNote, addNote, editNote, deleteNote}}>
             {props.children}
         </NoteContext.Provider>
     );

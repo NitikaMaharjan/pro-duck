@@ -8,7 +8,7 @@ export default function ProgressState(props) {
 
     const wait = (ms) => new Promise(resolve => setTimeout(resolve, ms));
     
-    const showProgress = async () => {
+    const showProgress = async() => {
         setProgress(0);
         await wait(100);
         setProgress(10);

@@ -1,5 +1,4 @@
 import { useState, useEffect, useContext, useRef } from "react";
-import { useNavigate } from "react-router-dom";
 import CursorContext from "../../context/cursor/CursorContext";
 import ThemeContext from "../../context/theme/ThemeContext";
 import ProgressContext from "../../context/progress/ProgressContext";
@@ -11,8 +10,6 @@ import Throbber from "../Throbber";
 import NoteItem from "./NoteItem";
 
 export default function Note() {
-
-    const navigate = useNavigate();
 
     const scrollContainerRef = useRef(null);
     const notesScrollRef = useRef(null);
@@ -177,8 +174,6 @@ export default function Note() {
     useEffect(() => {
         if(localStorage.getItem("token")){
             fetchNote();
-        }else{
-            navigate("/login");
         }
         // eslint-disable-next-line
     }, []);
