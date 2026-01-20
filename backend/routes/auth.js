@@ -62,7 +62,7 @@ router.post('/signup', [
     const authtoken = jwt.sign(data, jwt_secret);
 
     // responding with success and authentication token (in JSON format)
-    res.status(201).json({ success: true, authtoken });
+    res.status(200).json({ success: true, authtoken });
 
   } catch (error) {
     res.status(500).json({ success: false, error: 'Internal Server Error' });
@@ -93,14 +93,14 @@ router.post('/login', [
     const user_exists = await User.findOne({email});
 
     if (!user_exists){
-      return res.status(400).json({ success: false, error: 'Enter valid credentials.' });
+      return res.status(404).json({ success: false, error: 'Enter valid credentials.' });
     }
 
     // checking is the password is correct
     const password_matched = await bcrypt.compare(password, user_exists.password);
 
     if (!password_matched){
-      return res.status(400).json({ success: false, error: 'Enter valid credentials.' });
+      return res.status(401).json({ success: false, error: 'Enter valid credentials.' });
     }
 
     const data = {

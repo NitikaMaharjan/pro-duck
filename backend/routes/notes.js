@@ -29,7 +29,7 @@ router.post('/addnote', verifyUserToken, async (req, res) => {
       tag
     });
 
-    res.status(201).json({ success: true });
+    res.status(200).json({ success: true });
   } catch (error) {
     res.status(500).json({ success: false, error: 'Internal Server Error' });
   }
