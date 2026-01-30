@@ -1,7 +1,7 @@
 {
-  "name": "aki-notes-backend",
+  "name": "pro-duck-backend",
   "version": "1.0.0",
-  "description": "AkiNotes - Productivity App",
+  "description": "ProDuck - Productivity App",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
